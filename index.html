@@ -203,6 +203,9 @@
             padding: 5px;
         }
     </style>
+    <!-- Yandex.RTB -->
+    <script>window.yaContextCb=window.yaContextCb||[]</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
 </head>
 
 <body data-theme="light">
@@ -212,6 +215,17 @@
             <span style="font-weight: bold; font-size: 1.2rem;">Денежный счет</span>
             <button class="theme-toggle" onclick="toggleTheme()">🌓 Тема</button>
         </div>
+
+        <!-- Yandex.RTB R-A-19144789-1 -->
+        <div id="yandex_rtb_R-A-19144789-1"></div>
+        <script>
+        window.yaContextCb.push(() => {
+            Ya.Context.AdvManager.render({
+                "blockId": "R-A-19144789-1",
+                "renderTo": "yandex_rtb_R-A-19144789-1"
+            })
+        })
+        </script>
 
         <div class="total-banner">
             <div style="font-size: 0.8rem; opacity: 0.9; letter-spacing: 1px;">ИТОГО В КАССЕ</div>
@@ -236,9 +250,7 @@
             { val: 5000, type: 'note' }, { val: 2000, type: 'note' }, { val: 1000, type: 'note' },
             { val: 500, type: 'note' }, { val: 200, type: 'note' }, { val: 100, type: 'note' },
             { val: 50, type: 'note' }, { val: 10, type: 'note' }, { val: 5, type: 'note' },
-            { val: 10, type: 'coin', label: '10 ₽ (монета)' }, { val: 5, type: 'coin', label: '5 ₽ (монета)' },
-            { val: 2, type: 'coin', label: '2 ₽ (монета)' }, { val: 1, type: 'coin', label: '1 ₽ (монета)' },
-            { val: 0.5, type: 'coin', label: '50 коп.' }, { val: 0.1, type: 'coin', label: '10 коп.' }
+            { val: 2, type: 'note' }, { val: 1, type: 'note'}
         ];
 
         let currentTotal = 0;
@@ -247,12 +259,6 @@
             const container = document.getElementById('cash-list');
             container.innerHTML = '<div class="section-title">Купюры</div>';
             let coinAdded = false;
-
-            denominations.forEach((item, i) => {
-                if (item.type === 'coin' && !coinAdded) {
-                    container.innerHTML += '<div class="section-title">Монеты</div>';
-                    coinAdded = true;
-                }
                 const row = document.createElement('div');
                 row.className = 'row';
                 row.innerHTML = `
