@@ -258,6 +258,13 @@
             const container = document.getElementById('cash-list');
             container.innerHTML = '<div class="section-title">Купюры</div>';
             let coinAdded = false;
+            
+            denominations.forEach((item, i) => {
+                if (item.type === 'coin' && !coinAdded) {
+                    container.innerHTML += '<div class="section-title">Монеты</div>';
+                    coinAdded = true;
+                }
+            
                 const row = document.createElement('div');
                 row.className = 'row';
                 row.innerHTML = `
